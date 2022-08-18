@@ -23,10 +23,9 @@ int fic(FILE *ptr){
 int bi(char nk, FILE *ptr){
   int a=0;
   switch(nk){
-    case '1': 
-      push(stack, nk-'0'); break; 
-    case '0': 
-      push(stack, nk-'0'); break;
+    case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':  
+      push(stack, nk-'0');
+      break;
     case '>': 
       set[2]=0; break;
     case '<': 
@@ -120,6 +119,10 @@ int bi(char nk, FILE *ptr){
 }
 int main(int argc, char *argv[]){
   FILE *ptr = fopen(argv[1], "r");
+  if(ptr==NULL){
+    puts("cant find file, exiting"); 
+    exit(0);
+  }
   setm(ptr);
   while(1){
     fic(ptr);  
